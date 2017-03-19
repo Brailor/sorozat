@@ -1,0 +1,20 @@
+<p class="text-center">
+  Legfrisebb sorozatok, amiket érdemes lehet megnézni.
+</p>
+<div *ngFor="let item of recents">
+   <a class="result-item" routerLink="/specresult/{{item.show_id}}">
+      <ul>
+        <div class="row lista-recent">    
+          <div class="col-md-4 lista-item">
+            <img src='http://image.tmdb.org/t/p/w185{{item.poster_pic}}' alt="{{item.name}}" class="img img-responsive">
+          </div>
+          <div class="col-md-8 lista-item">
+          <b>{{ item.name }}</b><br><small>Első adás: {{item.created_at}}</small>
+          </div>
+        </div>
+    </ul>
+  </a>                    
+</div>
+
+
+<p class="text-muted text-center">A lista naponta frissül.</p>

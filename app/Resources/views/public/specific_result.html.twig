@@ -1,0 +1,49 @@
+ {% extends 'base.html.twig' %}
+
+ {% set content = true %}
+
+ {% block specific_show %}
+
+<div class="col-md-8">
+ {% if name is iterable %}
+ 
+    
+        <div class="jumbotron text-center">
+           <h1 class ="page-header">
+           {# a különböző API-k használata miatt csekkolni kell, hogy milyen értékkel dolgozunk, mivel ha az egyik API nem tartalmazza az adott sorozatot, akkor a másik API-ra kell hivatkozni, ami más nevezéseket használ #}
+          
+          {% if name.Title is defined %}{{name.Title}}
+          {% else %} {{name.name}}{% endif %}</h1><hr><br>
+           <b>( {% if name.Year is defined %}{{name.Year}}{% else %}{{name.first_air_date}}{% endif %} )</b></div>
+           <div class="well">
+           <div class="row">
+            <div class="col-md-4">
+            <img src="{% if name.Poster is defined %}{{name.Poster}}{% else %}http://image.tmdb.org/t/p/w185{{name.poster_path}}{% endif %}" class="img-responsive" alt="{% if name.Poster is defined %}{{name.Title}}{% else %}{{name.name}}{% endif %}">
+            </div>
+             <div class="col-md-8">
+              <div class="content">
+                <p>Szereplők: <strong>{% if name.Actors is defined %}{{name.Actors}}{% else %}N/A{% endif %}
+                </strong><br>Iró: {% if name.Writers is defined %}{{name.Writers}}{% else %}N/A{% endif %}
+                <br>Kategória: {% if name.Genre is defined %}{{name.Genre}}{% else %}{{name.type}}{% endif %}
+                <br>Műsoridő: {% if name.Runtime is defined %}{{name.Runtime}}{% else %}N/A{% endif %} 
+                 || Évadok száma: {% if name.totalSeasons is defined %}{{name.totalSeasons}}{% else %}{{name.number_of_seasons}}{% endif %}</p>
+                <p><strong>{% if name.imdbVotes is defined %}{{name.imdbVotes}}{% else %}{{name.vote_count}}{% endif %}</strong>
+                 szavazat alapján <strong>{% if name.imdbRating is defined %}{{name.imdbRating}}{% else %}{{name.vote_average}}{% endif %}
+                 </strong> pontszámú a sorozat.</p>
+                <p><a href="http://www.feliratok.info/?search= {% if name.Title is defined %}{{name.Title}}{% else %}{{name.name}}{% endif %}&soriSorszam=&nyelv=Magyar&sorozatnev=&sid=&complexsearch=true&knyelv=0&evad=&epizod1=&cimke=0&minoseg=0&rlsr=0&tab=all" target="_blank">[ Magyar felirat ]</a> | <a href="http://www.feliratok.info/?search= {% if name.Title is defined %}{{name.Title}}{% else %}{{name.name}}{% endif %}&soriSorszam=&nyelv=Angol&sorozatnev=&sid=&complexsearch=true&knyelv=0&evad=&epizod1=&cimke=0&minoseg=0&rlsr=0&tab=all" target="_blank">[ Angol felirat ]</a></p>
+
+                <p>Rövid leírás:<br> {% if name.Plot is defined %}{{name.Plot}}{% else %}{{name.overview}}<script>alert('Az adatbázisban ennek a sorozatnak még nincsen minden adata feltöltve, ezért azok hiányosak lesznek megjelenítve az oldalon!')</script>{% endif %}</p>
+                </div>
+           </div>
+            </div>
+      <button class="btn btn-default" onclick="goBack()" >Vissza</button>
+    </div>
+   
+    {% else %}
+    {{dump(name)}}
+    
+    
+ {% endif %}
+ 
+ </div>
+ {% endblock %}

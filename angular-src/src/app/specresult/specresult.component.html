@@ -1,0 +1,28 @@
+
+
+<div *ngIf = "Show" (!load) = "loading()">
+ <div class="jumbotron text-center">
+    <h1 class ="page-header">
+        {{Show.Title || Show.title}}
+      </h1><hr><br>
+        <b>( {{Show.Year || Show.year}} )</b>
+      </div>
+      <div class="well">
+         <div class="row">
+            <div class="col-md-4">
+              <img src="{{Show.Poster || Show.poster}}" class="img img-responsive" alt="{{Show.Title || Show.title}}">
+            </div>
+            <div class="col-md-8">
+              <div class="content">
+                <p>Szereplők: <strong>{{Show.Actors || Show.actors}}</strong><br>Író: {{Show.Writer || Show.writer}}
+                <br>Kategória: {{Show.Genre || Show.genre}}
+                <br>Műsoridő: {{Show.Runtime || Show.runtime}} || Évadok száma: {{Show.totalSeasons || Show.total_seasons}}</p>
+                <p><strong>{{Show.imdbVotes || Show.imdb_votes}}</strong> alapján <strong>{{Show.imdbRating || Show.imdb_rating}}</strong> pontszámú a sorozat.</p>
+                <p><a href="http://www.feliratok.info/?search={{Show.Title || Show.title}}&soriSorszam=&nyelv=Magyar&sorozatnev=&sid=&complexsearch=true&knyelv=0&evad=&epizod1=&cimke=0&minoseg=0&rlsr=0&tab=all" target="_blank">[ Magyar felirat ]</a> | <a href="http://www.feliratok.info/?search={{Show.Title || Show.title}}&soriSorszam=&nyelv=Angol&sorozatnev=&sid=&complexsearch=true&knyelv=0&evad=&epizod1=&cimke=0&minoseg=0&rlsr=0&tab=all" target="_blank">[ Angol felirat ]</a> | <a href="http://www.imdb.com/title/{{Show.imdbID || Show.imdb_i_d}}/?ref_=rvi_tt" target="_blank"> [ Imdb ]</a> | <a (click)="changeTitleforSorozatJunkieUrl()" href="http://www.sorozatjunkie.hu/tag/{{Show.Junkie}}/" target="_blank">[ SorozatJunkie ]</a></p> 
+                <p>Rövid leírás:<br>{{Show.Plot || Show.plot}}</p>
+              </div>
+            </div>
+         </div>
+      </div>
+</div>
+<button class="btn btn-info" onclick="goBack()">Vissza</button>

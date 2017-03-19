@@ -1,0 +1,20 @@
+<p class="text-center">
+  Legjobb 10 sorozat az Imdb rating szerint.
+</p>
+<div *ngFor="let item of alltime">
+   <a class="result-item" routerLink="/specresult/{{item.show_id}}">
+      <ul>
+        <div class="row lista-recent">    
+          <div class="col-md-4 lista-item">
+            <img src='{{item.poster_pic}}' alt="{{item.name}}" class="img img-responsive">
+          </div>
+          <div class="col-md-8 lista-item">
+          <b>{{ item.name }}</b><br><small>Első adás: {{ item.created_at }}<br>Rating: {{item.rating}}</small>
+          </div>
+        </div>
+    </ul>
+  </a>                    
+</div>
+
+
+<p class="text-muted text-center">A lista főként a személyes ízlésem és a rating alajpán lett rangsorolva.</p>

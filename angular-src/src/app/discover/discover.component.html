@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+<form (submit) = 'onSubmitDiscover()'>
+
+  <div class="form-group">
+    <label>Év:</label>
+      <select [(ngModel)] ="date" name ="date" class ="form-control" >
+       <option *ngFor="let date of dates" [value]="date" >{{date}}</option>
+      </select>
+  </div>
+  <div class="form-group">
+    <label>Kategória:</label>
+      <select [(ngModel)] = "genre" name = "genre" class = "form-control">
+        <option *ngFor="let genre of genres" [value]="genre.id">{{genre.category}}</option>
+      </select>
+  </div>
+    <input type="submit" class="btn btn-primary" value="Küldés">
+
+</form>
+</div>
+  </div>
+</div>
+
+<div *ngIf = "showdata">
+  <div *ngFor = "let items of showdata.results">
+    <a class="result-item" routerLink="/specresult/{{items.id}}">
+     <div class="panel panel-default">  
+      <div class="panel-heading">{{items.name}} <p>Népszerűségi index: {{items.popularity}}</p></div>
+        <div class ="panel-body discovered_series" >
+        <img src="http://image.tmdb.org/t/p/w185{{items.poster_path}}" alt="{{items.name}}">
+          <p>{{items.overview}}</p>
+        </div>
+      </div>
+     </a>
+  </div>
+</div>

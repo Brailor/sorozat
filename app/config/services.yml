@@ -1,0 +1,34 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+
+    discoveries:
+        class: AppBundle\ApiRequest\Discoveries
+    
+    searchapi:
+        class: AppBundle\ApiRequest\SearchAPI
+
+    showsdata:
+        class: AppBundle\ShowsDatabase\ShowsData
+
+    searchservice:
+        class: AppBundle\Services\SearchService
+        arguments: ["@form.factory", "@router"]
+
+    discoverservice:
+        class: AppBundle\Services\DiscoverService
+        arguments: ["@form.factory", "@router"]    
+
+    emailvalidator:
+        class: AppBundle\Services\EmailValidator       
+
+    
+
+
+   
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

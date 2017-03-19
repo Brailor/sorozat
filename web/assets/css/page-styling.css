@@ -1,0 +1,77 @@
+
+body{
+   background-color:  rgba(26, 39, 51, 0.94);
+   overflow-x: hidden;
+}
+textarea.form-control {
+    height: 200px;
+}
+
+.jumbotron{
+    box-shadow: 2px 2px 15px black;
+}
+.hero-section{
+    margin-bottom: 0;
+    opacity: 0.8;
+    background-image: url(/assets/img/tv.jpg);
+}
+.result-item {
+    text-decoration: none;
+    color:#ebebeb;
+}
+.result-item:active{
+    text-decoration: none;
+    color:#ebebeb;
+}
+.result-item:hover{
+    text-decoration: none;
+    color:#ebebeb;
+   
+}
+.result-item:visited{
+    text-decoration: none;
+    color:#ebebeb;
+}
+.panel{
+    box-shadow: 3px 4px 15px #222;
+}
+.hero-item{
+    margin:0;
+    opacity: 0.95;
+}
+.lista-recent{
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: #4e5d6c;
+    box-shadow: 1px 2px 15px #222;
+    opacity : 0.85;
+    background-color:rgba(46, 68, 88, 0.55);
+
+}
+.footer{
+    margin-bottom: 5px;
+}
+
+.alltime-list{
+    margin-left: -20px;
+}
+
+.list-header{
+
+    margin-left: 30px
+}
+.text-justify {
+    text-align: justify;
+    margin-top: 25%;
+    text-shadow: 1px 1px 1px black;
+}
+.well{
+    background-color: rgba(16, 16, 16, 0.15);
+}
+.blue{
+    border-radius: 10%;
+    border-top: 4px solid #15157b;
+}
+.orange{
+    border-top: 4px solid#df691a;
+}

@@ -1,0 +1,12 @@
+<div *ngIf = "Show">
+  <div *ngFor = "let items of Show['Search']">
+    <a class="result-item" routerLink ="/specresult/{{items.imdbID}}">
+        <div class="panel panel-default">  
+            <div class="panel-heading">{{items.Title}}</div>
+                <div class ="panel-body discovered_series">            
+                <img src="{{items.Poster}}" alt="{{items.Title}}">
+                </div>
+        </div>
+       </a>
+  </div>
+</div>

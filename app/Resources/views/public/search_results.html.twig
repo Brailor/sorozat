@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% set content = true %}
+
+{% block result %}
+ 
+<div class="col-md-8">
+ {% if name['Search'] is defined %}
+ 
+ <a href="/discover"><button class="btn btn-default">Vissza</button></a>
+    
+    {% if name['Search'] is iterable %}
+    {% for items in name['Search'] %}
+       <a class="result-item" href="/result/{{items.imdbID}}">
+        <div class="panel panel-default">  
+            <div class="panel-heading">{{items.Title}}</div>
+                <div class ="panel-body discovered_series">            
+                <img src="{{items.Poster}}" alt="{{items.Title}}">
+                </div>
+        </div>
+       </a>
+
+    
+    {% endfor %}
+    {% endif %}
+    
+{% else %}
+
+    {% for flash_message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger text-center">{{flash_message}}</div>
+              {% endfor %}
+ {% endif %}
+ </div>
+
+   
+ {% endblock %}
+
+  

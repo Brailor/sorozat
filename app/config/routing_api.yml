@@ -1,0 +1,23 @@
+blog_posts:
+    type: rest
+    resource: AppBundle\Controller\ShowsController
+
+discoveries:
+    type: rest
+    resource: AppBundle\Controller\DiscoverController
+
+updatediscover:
+    type: rest
+    resource: AppBundle\Controller\DiscoverUpdateController
+
+updatedrecent:
+    type: rest
+    resource: AppBundle\Controller\RecentUpdateController
+
+getrecent:
+    type: rest
+    resource: AppBundle\Controller\RecentController
+
+getalltime:
+    type: rest
+    resource: AppBundle\Controller\AlltimeController    

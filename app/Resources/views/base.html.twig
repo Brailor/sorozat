@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta name="description" content="Sorozat ajánló szolgáltatás">
+        <meta name="keywords" content="sorozat, sorozat ajánló">
+        <meta name="author" content="viktorohad.hu">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/page-styling.css') }}">
+        {% endblock %}
+    {% endblock %}    
+    </head>
+<body>
+    {# Header Row start--------------------------------------------------------------------------------------------------------->#}
+    <div class="row">
+     {# Hero-Section Row start -------------------------------------------------------------------------------------> #}
+        <div class="col-md-10 col-md-offset-1">
+            <div class="jumbotron hero-section">
+                 <div class="row">
+                    <div class="col-xs-1 col-md-1 hero-item" style="width: 19.9999992%">
+                            <img src="{{ asset('assets/img/breaking-bad.jpg') }}" class="img img-responsive" alt="">
+                    </div>
+                    <div class="col-xs-1 col-md-1 hero-item" style="width: 19.9999992%">
+                            <img src="{{ asset('assets/img/game-of-thrones.jpg') }}" class="img img-responsive" alt="">
+                    </div>
+                    <div class="col-xs-1 col-md-1 hero-item" style="width: 19.9999992%">
+                            <img src="{{ asset('assets/img/sherlock.jpg') }}" class="img img-responsive" alt="">
+                    </div>
+                    <div class="col-xs-1 col-md-1 hero-item" style="width: 19.9999992%">
+                            <img src="{{ asset('assets/img/westworld.jpg') }}" class="img img-responsive" alt="">
+                    </div>
+                    <div class="col-xs-1 col-md-1 hero-item" style="width: 19.9999992%">
+                            <img src="{{ asset('assets/img/stranger-things.jpg') }}" class="img img-responsive" alt="">
+                    </div>       
+                </div>
+            </div>
+    {# Hero-Section Row end -------------------------------------------------------------------------------------> #}
+
+    {# Navbar start ---------------------------->#}
+    <nav class="navbar navbar-default">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+            <img alt="Home" src=""></a>
+         </div>
+         <ul class="nav navbar-nav">
+            <li><a href="/discover">Sorozat Ajánló</a></li>
+         </ul>
+        <ul class="nav navbar-form navbar-left">
+            {{ form_start(search_form) }}
+            <li class='form-group'>{{ form_row(search_form.name, {'attr': {'class' :'form-control'}}) }}</li>
+            <li class='form-group'>{{ form_row(search_form.submit, {'attr': {'class' :'btn btn-primary search_button'}}) }}</li>
+            {{ form_end(search_form) }}     
+        </ul>
+        <ul class="nav navbar-form navbar-right">
+            <li class= 'form-group'><button class="btn btn-info scrollToContact">Lépj kapcsolatba velem</button></li>
+        </ul>
+    </nav>
+    {# Navbar end ---------------------------->#}
+    </div>
+{# Header Row end------------------------------------------------------------------------------------------------------------------->#}
+{# Content Row start---------------------------------------------------------------------------------------------------------------->#}
+<div class="row">
+        {# Recent list Row start ---------------------------------------------------->#}
+        <div class="col-md-2 recent-list">
+            <h4 class="text-center list-header">Legjobb friss sorozatok listája:</h4>
+                {% for item in data %}
+                <a class="result-item" href="/result/{{item.show_id}}">
+                    <ul>
+                        <div class="row lista-recent">
+                        <div class="col-md-4 lista-item">
+                            <img src="http://image.tmdb.org/t/p/w185{{item.posterPic}}" alt="{{item.name}}" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8 lista-item">
+                            <b>{{ item.name }}</b><br><small>Első adás: {{ item.createdAt }}</small>
+                        </div>
+                        </div>
+                    </ul>
+                </a>
+                    
+                {% endfor %}
+         
+          <p class="text-muted text-center">A lista naponta frissül.</p>
+        </div>
+        {# Recent list Row end ---------------------------------------------------->#}
+
+        {# Discover, results, spec_result Row start ------------> #}
+            {% if content is defined %}
+                {% block discover %}{% endblock %}
+        
+                {% block result %}{% endblock %}
+        
+                {% block specific_show %}{% endblock %}
+            {% else %}
+                <div class="col-md-8">
+                {% if discover_form is defined %}
+                        <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    {{ form_start(discover_form) }}
+                                    {{ form_row(discover_form.date,{'attr':{'class': 'form-control'}, 'label' : 'Év'})}}
+                                    {{ form_row(discover_form.genre, {'attr':{'class': 'form-control'}, 'label': 'Kategória'})}}
+                                    {{ form_row(discover_form.submit, {'attr':{'class': 'btn btn-success discover_button'}})}}
+                                    {{ form_end(discover_form) }}
+                                </div>
+                        </div><hr>         
+                    
+                {% endif %}         
+                
+                        <h3>
+                            Ennek az oldalnak a célja és megalkotásának oka az, hogy friss és megtekintésre alkamas sorozatokat ajánljon.
+                        </h3>
+                       <div class="well"> 
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-2">
+                                <p class="lead text-justify">
+                                   <strong> Ha részeltesebb infókat, leírást, elemzést szeretnél olvasni egyes sorozatokról, akkor ajánlom az alábbi oldal rendszeres látogatását.</strong>
+                                </p>
+                             </div> 
+                            <div class="col-md-5">
+                                <a href="https://www.sorozatjunkie.hu/" target="_blank"><img class="img img-responsive img-thumbnail" alt="Sorozat Junkie" src="{{asset('assets/img/junkie.png')}}"></a>
+                                <hr class="orange">
+                            </div>
+                            
+                             <div class="col-md-6 col-md-offset-1">
+                                <hr class="blue">
+                                 <a href="http://www.feliratok.info/" target="_blank"><img class="img img-responsive img-thumbnail" alt="Feliratok.info" src="{{asset('assets/img/sub.png')}}"></a>
+                            
+                            </div>
+                               <div class="col-md-4">
+                                    <p class="lead text-justify">
+                                        <strong>Jó minőségű feliratokat nemcsak sorozatokhoz, de filmekhez is angolul/magyarul a képen látható helyen lehet elérni.</strong>
+                                    </p>
+                            </div>   
+                        </div>  
+                      </div>  
+                    </div>
+            {% endif %}    
+        {# Discover, results, spec_result Row end ------------> #}    
+        
+        
+        {# Alltime list Row start ---------------------------------------------------->#}
+        <div class="col-md-2 alltime-list">
+            <h4 class="text-center list-header">Top 10 sorozat az Imdb rating alapján:</h4>
+                {% for item in alltime %}
+                <a class="result-item" href="/result/{{item.show_id}}">
+                    <ul>
+                        <div class="row lista-recent">    
+                        <div class="col-md-4 lista-item">
+                            <img src="{{item.posterPic}}" alt="{{item.name}}" class="img img-responsive">
+                        </div>
+                        <div class="col-md-8 lista-item">
+                            <b>{{ item.name }}</b><br><small>Első adás: {{ item.createdAt }}<br>Rating: {{item.rating}}</small>
+                        </div>
+                        </div>
+                    </ul>
+                </a>                    
+                {% endfor %}
+            <p class="text-muted text-center">A lista főként a személyes ízlésem és a rating alajpán lett rangsorolva.</p>
+        </div>
+        {# Alltime list Row end ---------------------------------------------------->#}
+ </div>       
+{# Content Row end ---------------------------------------------------------------------------------------------------------------->#}
+        
+{# Footer Row start---------------------------------------------------------------------------------------------------------------->#} <div class="row">      
+    <div class="col-md-8 col-md-offset-2 aligner">
+        <div class="footer">
+            <hr><p class="text-center">Valamilyen ötleted/tanácsod van az oldallal kapcsolatban?<br>Kérlek írd meg üzenetben, minden kritika jól jön. :)</p>
+                <div class="row">
+                        {{ form_start(form) }}
+                    <div class="col-md-6" id="contact">
+                        {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-12">
+                        {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                        {{ form_row(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                </div>
+        </div> 
+    </div>
+</div>
+{# Footer Row end---------------------------------------------------------------------------------------------------------------->#}    
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>   
+    </body>
+        
+</html>
