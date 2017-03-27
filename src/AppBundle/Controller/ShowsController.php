@@ -29,7 +29,7 @@ use AppBundle\Entity\Shows;
  * @RouteResource("show")
  */
 //TODO: valamilyen időközönként frissíteni kell az adatbázist majd, hogy ne elavult adatok legyen benne a friss sorozatoknál, mert
-//a mostani állapotában egyszer bekerül az adatbázisba, de soha nem frissül
+//a mostani állapotában egyszer bekerül az adatbázisba, de soha nem frissül :))
 class ShowsController extends FOSRestController implements ClassResourceInterface{
 
     public function getAction($id){
@@ -93,8 +93,8 @@ class ShowsController extends FOSRestController implements ClassResourceInterfac
                 return $data;
             }
             else{
-                $response = $this->get('discoveries')->getSpecificShowData($id);
-                $response = json_decode($response, true);
+                $data = $this->get('discoveries')->getSpecificShowData($id);
+                $response = json_decode($data, true);
                 //elmentjük a sorozatot az adatbázisban, hogy később már ne kelljen API-t hívni rá
                 $new_show = new Shows();
                 $new_show->setActors($response['Actors']);

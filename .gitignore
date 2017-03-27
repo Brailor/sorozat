@@ -46,3 +46,4 @@ Thumbs.db
 /var/cache
 /var/logs
 /var/sessions
+/nbproject/private/

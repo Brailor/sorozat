@@ -41,6 +41,9 @@ class ShowsData {
                 $data = json_decode($response, true);
                 $infos = [];
                 for($i = 0; $i < 15; $i++){
+                  if(!isset($data['results'][$i]['genre_ids'][0])){
+                    $data['results'][$i]['genre_ids'][0] = 0;
+                  }
                    $infos[$i] = array(
                        'name' => $data['results'][$i]['name'],
                        'show_id' => $data['results'][$i]['id'],

@@ -10,8 +10,8 @@ export class DiscoverService {
 
 
    getDiscoveries(date:string, genre:number){
-     return this.Http.get('http://localhost:8080/discover/' + date + ':' + genre)
-                        .map(res => res.json());
+     return this.Http.get('http://81.2.254.235:8000/discover/' + date + ':' + genre)
+          .map(res => res.json());
    }
 
 }

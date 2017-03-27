@@ -9,6 +9,6 @@ export class SpecresultService {
 
         showSpecificShow(id:any){
 
-          return this.Http.get('http://localhost:8080/shows/' + id).map(res => res.json());
+          return this.Http.get('http://81.2.254.235:8000/shows/' + id).map(res => res.json());
         }
 }

@@ -9,7 +9,7 @@ export class SearchService {
 
     searchByName(name:string){
 
-      return this.Http.get('http://localhost:8080/search/' + name).map(res => res.json());
+      return this.Http.get('http://81.2.254.235:8000/search/' + name).map(res => res.json());
       
     }
 

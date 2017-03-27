@@ -7,7 +7,7 @@ export class GetRecentService {
 
   constructor(private http : Http) { }
     getRecent(){
-      return this.http.get('http://localhost:8080/recent')
+      return this.http.get('http://81.2.254.235:8000/recent')
         .map(res => res.json());
     }
 }

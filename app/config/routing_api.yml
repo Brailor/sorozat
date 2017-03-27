@@ -20,4 +20,8 @@ getrecent:
 
 getalltime:
     type: rest
-    resource: AppBundle\Controller\AlltimeController    
+    resource: AppBundle\Controller\AlltimeController
+
+cronupdater:
+    type: rest
+    resource: AppBundle\Controller\CronUpdaterController

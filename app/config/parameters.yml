@@ -10,6 +10,6 @@ parameters:
     mailer_user: viktor.ohad
     mailer_password: dumbo123
     secret: f68245460bd84d91c1464bfa3d19db48528a802f
-    cors_allow_origin: 'http://localhost:4200'
+    cors_allow_origin: '*'
     api_name: 'Show API'
     api_description: 'Show Symfony Backend API for Angular.'

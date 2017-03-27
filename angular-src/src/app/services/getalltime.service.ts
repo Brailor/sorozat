@@ -7,7 +7,7 @@ export class GetalltimeService {
 
   constructor(private http : Http) { }
     getAlltime(){
-      return this.http.get('http://localhost:8080/alltime')
+      return this.http.get('http://81.2.254.235:8000/alltime')
         .map(res => res.json());
     }
 }
