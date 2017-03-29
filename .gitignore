@@ -4,6 +4,10 @@
 /dist
 /tmp
 
+# config
+/app/config
+/app/.htaccess
+
 # dependencies
 /angular-src/node_modules
 

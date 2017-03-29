@@ -22,7 +22,7 @@ export class ResultComponent implements OnInit {
     this.route.params
       .switchMap((params : Params) => this.search.searchByName(params['name']))
         .subscribe(data => {
-          this.Show = data
+          this.Show = data;
         });
   }
 }

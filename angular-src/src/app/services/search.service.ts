@@ -8,9 +8,9 @@ export class SearchService {
   constructor(private Http : Http) { }
 
     searchByName(name:string){
-
-      return this.Http.get('http://81.2.254.235:8000/search/' + name).map(res => res.json());
-      
+     
+      return this.Http.get('http://81.2.254.235:8000/search/' + name.replace(/ /g, '+')).map(res => res.json());
+     
     }
 
 }

@@ -10,7 +10,12 @@
                     </ul>
                     <form class="navbar-form navbar-left" (submit) = "onSubmitSearch()">
                         <div class="form-group">
-                            <input type="text" class="form-control" [(ngModel)] = "showname" name= "showname" placeholder="Sorozat neve...">
+                            <input  type="text" class="form-control" [(ngModel)] = "showname" name= "showname" placeholder="Sorozat neve..." (input)="search($event.target.value)" list="show-suggestion" >
+                            <datalist id="show-suggestion">
+                               <option [value]="item.title" *ngFor="let item of items">
+                                    {{item.title}}
+                               </option>
+                            </datalist>
                         </div>
                             <button type="submit" class="btn btn-primary">Keresés</button>
                     </form>                   

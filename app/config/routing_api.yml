@@ -25,3 +25,7 @@ getalltime:
 cronupdater:
     type: rest
     resource: AppBundle\Controller\CronUpdaterController
+
+search:
+    typre: rest
+    resource: AppBundle\Controller\NavSearchController
